@@ -11,7 +11,7 @@ namespace SaveSystem
 
         public T ToObject<T>(string data)
         {
-            return default(T);
+            return default;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace SaveSystem.Tests
@@ -9,16 +8,65 @@ namespace SaveSystem.Tests
     [TestFixture]
     public class JsonConverterTests
     {
+        protected IEnumerable<IJsonConverter> _converters;
+        protected IEnumerable<object> _dataTypes;
+
+        [OneTimeSetUp]
+        public virtual void Init()
+        {
+            _converters = ConverterConfiguration.GetConverters();
+            _dataTypes = ConverterConfiguration.GetDataTypes();
+        }
+        [Test]
+        public void ToObject_ShouldHandleNullJson() {
+            foreach (var converter in _converters) {
+                object obj = null;
+
+                Assert.Throws<ArgumentNullException>(()=> converter.ToJson(obj));
+            }
+        }
+
+        [Test]
+        public void ToJson_ShouldThrowExceptionForNullObject()
+        {
+            foreach (var converter in _converters)
+            {
+                object obj = null;
+
+                Assert.Throws<ArgumentNullException>(() => converter.ToJson(obj));
+            }
+        }
+        [Test]
+        public void ToJson_ShouldThrowExceptionForNullJson()
+        {
+            foreach (var converter in _converters)
+            {
+                string json = null;
+
+                Assert.Throws<ArgumentNullException>(() => converter.ToObject<Object>(json));
+            }
+        }
+
+        [Test]
+        public void ToObject_ShouldThrowExceptionForInvalidJson()
+        {
+            foreach (var converter in _converters)
+            {
+                string invalidJson = "invalid json";
+
+                Assert.Throws<ArgumentException>(() => converter.ToObject<object>(invalidJson));
+            }
+        }
+
         [Test]
         public void AllConvertersAndDataTypes_ShouldSerializeAndDeserializeCorrectly()
         {
             // Get converters and data types from configuration
-            var converters = ConverterConfiguration.GetConverters();
-            var dataTypes = ConverterConfiguration.GetDataTypes();
+            
 
-            foreach (var converter in converters)
+            foreach (var converter in _converters)
             {
-                foreach (var data in dataTypes)
+                foreach (var data in _dataTypes)
                 {
                     var dataType = data.GetType();
 
