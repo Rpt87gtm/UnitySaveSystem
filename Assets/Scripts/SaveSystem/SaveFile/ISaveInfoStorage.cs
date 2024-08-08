@@ -2,7 +2,7 @@
 
 namespace SaveSystem
 {
-    interface ISaveInfoStorage
+    public interface ISaveInfoStorage
     {
         IEnumerable<ISaveInfo> SaveInfoList();
     }

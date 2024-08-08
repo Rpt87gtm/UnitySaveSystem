@@ -1,6 +1,6 @@
 namespace SaveSystem
 {
-    interface IGameDataContainer
+    public interface IGameDataContainer
     {
         void AddGameData<T>(string name, IGameData<T> gameData);
         void RemoveGameData<T>(string name);

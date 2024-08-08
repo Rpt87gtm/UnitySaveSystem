@@ -1,6 +1,6 @@
 namespace SaveSystem
 {
-    interface IGameData<T>
+    public interface IGameData<T>
     {
         T Data(string name);
     }

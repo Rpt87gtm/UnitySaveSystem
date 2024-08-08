@@ -1,6 +1,6 @@
 ﻿namespace SaveSystem
 {
-    interface ISaveInfoFactory
+    public interface ISaveInfoFactory
     {
         ISaveInfo Create(ISave save);
     }

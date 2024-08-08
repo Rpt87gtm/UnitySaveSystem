@@ -2,7 +2,7 @@
 
 namespace SaveSystem
 {
-    interface ISaveInfo
+    public interface ISaveInfo
     {
         Dictionary<string, string> Info();
         void Update(string key, string value);

@@ -1,6 +1,6 @@
 namespace SaveSystem
 {
-    interface ISave
+    public interface ISave
     {
         void Save();
         IGameDataContainer GameDataContainer();
