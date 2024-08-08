@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Newtonsoft.Json;
 
 namespace SaveSystem
 {
@@ -29,7 +28,7 @@ namespace SaveSystem
                     jsonObject[property.Name] = property.GetValue(data);
                 }
 
-                return JsonConvert.SerializeObject(jsonObject);
+                return _innerConverter.ToJson(jsonObject);
             }
             else
             {
@@ -40,7 +39,7 @@ namespace SaveSystem
                     jsonObject[field.Name] = field.GetValue(data);
                 }
 
-                return JsonConvert.SerializeObject(jsonObject);
+                return _innerConverter.ToJson(jsonObject);
             }
         }
 
@@ -54,20 +53,20 @@ namespace SaveSystem
 
                 if (type.IsAnonymousType())
                 {
-                    var jsonObject = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+                    var jsonObject = _innerConverter.ToObject<Dictionary<string, object>>(data);
                     return CreateAnonymousType<T>(jsonObject);
                 }
                 else
                 {
-                    var jsonObject = JsonConvert.DeserializeObject<Dictionary<string, object>>(data);
+                    var jsonObject = _innerConverter.ToObject<Dictionary<string, object>>(data);
                     var instance = Activator.CreateInstance<T>();
 
                     foreach (var field in type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
                     {
                         if (jsonObject.TryGetValue(field.Name, out var value))
                         {
-                            var json = JsonConvert.SerializeObject(value);
-                            var convertedValue = JsonConvert.DeserializeObject(json, field.FieldType);
+                            var json = _innerConverter.ToJson(value);
+                            var convertedValue = _innerConverter.ToObject(json, field.FieldType);
                             field.SetValue(instance, convertedValue);
                         }
                     }
@@ -75,14 +74,15 @@ namespace SaveSystem
                     return instance;
                 }
             }
-            catch (JsonReaderException ex)
+            catch (Exception ex)
             {
                 throw new ArgumentException("The JSON string is invalid and could not be deserialized.", ex);
             }
-            catch (JsonSerializationException ex)
-            {
-                throw new ArgumentException("The JSON string is invalid or does not match the target type.", ex);
-            }
+        }
+
+        public object ToObject(string data, Type type)
+        {
+            return _innerConverter.ToObject(data, type);
         }
 
         private T CreateAnonymousType<T>(Dictionary<string, object> jsonObject)
@@ -96,8 +96,8 @@ namespace SaveSystem
             {
                 if (jsonObject.TryGetValue(parameters[i].Name, out var value))
                 {
-                    var json = JsonConvert.SerializeObject(value);
-                    args[i] = JsonConvert.DeserializeObject(json, parameters[i].ParameterType);
+                    var json = _innerConverter.ToJson(value);
+                    args[i] = _innerConverter.ToObject(json, parameters[i].ParameterType);
                 }
             }
 

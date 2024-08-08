@@ -61,9 +61,6 @@ namespace SaveSystem.Tests
         [Test]
         public void AllConvertersAndDataTypes_ShouldSerializeAndDeserializeCorrectly()
         {
-            // Get converters and data types from configuration
-            
-
             foreach (var converter in _converters)
             {
                 foreach (var data in _dataTypes)
@@ -77,7 +74,7 @@ namespace SaveSystem.Tests
 
                     // Test deserialization
                     // Use reflection to call ToObject<T> for each data type
-                    MethodInfo method = typeof(IJsonConverter).GetMethod(nameof(IJsonConverter.ToObject))
+                    MethodInfo method = typeof(IJsonConverter).GetMethod(nameof(IJsonConverter.ToObject), new[] { typeof(string) })
                         .MakeGenericMethod(dataType);
 
                     var deserialized = method.Invoke(converter, new object[] { json });

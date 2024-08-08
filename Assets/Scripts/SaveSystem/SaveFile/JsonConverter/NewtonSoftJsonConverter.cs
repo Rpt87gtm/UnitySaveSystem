@@ -29,5 +29,22 @@ namespace SaveSystem
                 throw new ArgumentException("The JSON string is invalid or does not match the target type.", ex);
             }
         }
+
+        public object ToObject(string data, Type type)
+        {
+            if (data == null) throw new ArgumentNullException("Json is null");
+            try
+            {
+                return JsonConvert.DeserializeObject(data, type);
+            }
+            catch (JsonReaderException ex)
+            {
+                throw new ArgumentException("The JSON string is invalid and could not be deserialized.", ex);
+            }
+            catch (JsonSerializationException ex)
+            {
+                throw new ArgumentException("The JSON string is invalid or does not match the target type.", ex);
+            }
+        }
     }
 }

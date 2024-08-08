@@ -12,8 +12,7 @@ namespace SaveSystem.Tests
         {
             return new List<IJsonConverter>
             {
-                new NewtonSoftJsonConverter(),
-                
+                new NewtonSoftJsonConverter()
             };
         }
 
