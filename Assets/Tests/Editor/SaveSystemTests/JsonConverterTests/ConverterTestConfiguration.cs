@@ -33,7 +33,16 @@ namespace SaveSystem.Tests.JsonConverter
             return new List<object>
             {
                 new PrivateFieldsExample(3,"win"),
+
+                new BoolData(new Dictionary<string,bool>{ { "test", true },{ "test3", false },{ "test2", false } }),
+                new ByteData(new Dictionary<string,byte>{ { "test", 0 },{ "test3", 5 },{ "test2", 255 } }),
+                new CharData(new Dictionary<string,char>{ { "test", '3' },{ "test3", 'r' },{ "test2", '/' } }),
+                new DoubleData(new Dictionary<string,double>{ { "test", 3 },{ "test3", 5.148762384436482 },{ "test2", -322 } }),
+                new FloatData(new Dictionary<string,float>{ { "test", 3 },{ "test3", 5.4234324f },{ "test2", -322 } }),
                 new IntData(new Dictionary<string,int>{ { "test", 3 },{ "test3", 5 },{ "test2", -322 } }),
+                new LongData(new Dictionary<string,long>{ { "test", 3 },{ "test3", 53223343L },{ "test2", -3220000L } }),
+                new ShortData(new Dictionary<string,short>{ { "test", 3 },{ "test3", 5 },{ "test2", -322 } }),
+                new StringData(new Dictionary<string,string>{ { "test", "3" },{ "test3", "5" },{ "test2", "-322" } }),
             };
         }
 
