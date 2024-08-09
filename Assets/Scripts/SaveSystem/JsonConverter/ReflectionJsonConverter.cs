@@ -34,7 +34,7 @@ namespace SaveSystem
             {
                 var jsonObject = new Dictionary<string, object>();
 
-                foreach (var field in type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
+                foreach (var field in type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy))
                 {
                     jsonObject[field.Name] = field.GetValue(data);
                 }
@@ -61,7 +61,7 @@ namespace SaveSystem
                     var jsonObject = _innerConverter.ToObject<Dictionary<string, object>>(data);
                     var instance = Activator.CreateInstance<T>();
 
-                    foreach (var field in type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
+                    foreach (var field in type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy))
                     {
                         if (jsonObject.TryGetValue(field.Name, out var value))
                         {

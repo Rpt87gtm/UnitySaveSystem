@@ -1,10 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using SaveSystem.GameData;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
 
-namespace SaveSystem.Tests
+namespace SaveSystem.Tests.JsonConverter
 {
     public static class ConverterConfiguration
     {
@@ -24,9 +22,9 @@ namespace SaveSystem.Tests
                 new { Name = "Test", Age = 30 },
                 new Person { Name = "John", Age = 25 },
                 new Product { Id = 1, Price = 99.99 },
-                new Dictionary<int, string>{ { 3, "sfd" },{ 5, "sdf"}}
+                new Dictionary<int, string>{ { 3, "sfd" },{ 5, "sdf"}},
+                
 
-                //new Vector2(3,4) u cannot serialize just Vector2
             };
         }
 
@@ -35,6 +33,7 @@ namespace SaveSystem.Tests
             return new List<object>
             {
                 new PrivateFieldsExample(3,"win"),
+                new IntData(new Dictionary<string,int>{ { "test", 3 },{ "test3", 5 },{ "test2", -322 } }),
             };
         }
 

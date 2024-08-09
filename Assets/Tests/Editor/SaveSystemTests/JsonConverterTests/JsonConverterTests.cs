@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace SaveSystem.Tests
+namespace SaveSystem.Tests.JsonConverter
 {
     [TestFixture]
     public class JsonConverterTests

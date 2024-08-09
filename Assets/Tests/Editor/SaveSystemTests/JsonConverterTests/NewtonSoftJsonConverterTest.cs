@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
-using UnityEngine;
 
-namespace SaveSystem.Test
+namespace SaveSystem.Tests.JsonConverter
 {
     [TestFixture]
     public class NewtonSoftJsonConverterTest

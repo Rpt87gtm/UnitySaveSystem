@@ -1,11 +1,7 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using static UnityEditor.LightingExplorerTableColumn;
 
-namespace SaveSystem.Tests
+namespace SaveSystem.Tests.JsonConverter
 {
     [TestFixture]
     public class ReflectionJsonConverterTest : JsonConverterTests
