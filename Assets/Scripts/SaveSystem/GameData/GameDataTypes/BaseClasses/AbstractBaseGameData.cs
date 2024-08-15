@@ -49,7 +49,6 @@ namespace SaveSystem.GameData
 
         public override int GetHashCode()
         {
-            // Используем хэш-код словаря _data
             int hashCode = 0;
             foreach (var kvp in _data)
             {
@@ -57,6 +56,21 @@ namespace SaveSystem.GameData
                 hashCode ^= (kvp.Value != null) ? kvp.Value.GetHashCode() : 0;
             }
             return hashCode;
+        }
+
+        public void RemoveData(string key)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                throw new ArgumentException("Key cannot be null or whitespace.", nameof(key));
+            }
+
+            if (!_data.ContainsKey(key))
+            {
+                throw new KeyNotFoundException($"GameData with name '{key}' does not exist.");
+            }
+
+            _data.Remove(key);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using SaveSystem.GameData;
+using System;
 using System.Collections.Generic;
 
 namespace SaveSystem.Tests.GameData.BaseClasses
@@ -154,6 +155,49 @@ namespace SaveSystem.Tests.GameData.BaseClasses
 
             // Act & Assert
             Assert.AreNotEqual(data1.GetHashCode(), data2.GetHashCode());
+        }
+        [Test]
+        public void Test_RemoveData_RemovesExistingKey()
+        {
+            // Arrange
+            var charData = new CharData();
+            charData.SetData("key1", 'd');
+
+            // Act
+            charData.RemoveData("key1");
+
+            // Assert
+            Assert.IsFalse(charData.ContainsKey("key1"));
+        }
+
+        [Test]
+        public void Test_RemoveData_ThrowsKeyNotFoundExceptionForNonExistingKey()
+        {
+            // Arrange
+            var charData = new CharData();
+
+            // Act & Assert
+            Assert.Throws<KeyNotFoundException>(() => charData.RemoveData("nonexistentKey"));
+        }
+
+        [Test]
+        public void Test_RemoveData_ThrowsArgumentExceptionForNullKey()
+        {
+            // Arrange
+            var charData = new CharData();
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => charData.RemoveData(null));
+        }
+
+        [Test]
+        public void Test_RemoveData_ThrowsArgumentExceptionForEmptyKey()
+        {
+            // Arrange
+            var charData = new CharData();
+
+            // Act & Assert
+            Assert.Throws<ArgumentException>(() => charData.RemoveData(""));
         }
     }
 }
