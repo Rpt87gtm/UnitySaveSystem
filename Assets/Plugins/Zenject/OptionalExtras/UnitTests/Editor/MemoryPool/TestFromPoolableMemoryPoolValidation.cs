@@ -1,6 +1,6 @@
 
-using System;
 using NUnit.Framework;
+using System;
 using Assert = ModestTree.Assert;
 
 namespace Zenject.Tests.Bindings

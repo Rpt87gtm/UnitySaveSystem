@@ -1,8 +1,8 @@
 #if !(UNITY_WSA && ENABLE_DOTNET)
 
-using System.Linq;
 using ModestTree;
 using NUnit.Framework;
+using System.Linq;
 using UnityEngine;
 using Assert = ModestTree.Assert;
 

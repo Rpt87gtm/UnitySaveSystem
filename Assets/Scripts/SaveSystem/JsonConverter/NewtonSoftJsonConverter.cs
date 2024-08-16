@@ -18,7 +18,7 @@ namespace SaveSystem
             ContractResolver = new IncludeAllFieldsContractResolver(),
             Formatting = Formatting.Indented
         })
-        {}
+        { }
 
 
         public string ToJson(object data)

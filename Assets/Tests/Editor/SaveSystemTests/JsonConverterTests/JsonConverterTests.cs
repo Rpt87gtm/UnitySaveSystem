@@ -18,11 +18,13 @@ namespace SaveSystem.Tests.JsonConverter
             _dataTypes = ConverterConfiguration.GetDataTypes();
         }
         [Test]
-        public void ToObject_ShouldHandleNullJson() {
-            foreach (var converter in _converters) {
+        public void ToObject_ShouldHandleNullJson()
+        {
+            foreach (var converter in _converters)
+            {
                 object obj = null;
 
-                Assert.Throws<ArgumentNullException>(()=> converter.ToJson(obj));
+                Assert.Throws<ArgumentNullException>(() => converter.ToJson(obj));
             }
         }
 
@@ -57,7 +59,7 @@ namespace SaveSystem.Tests.JsonConverter
                 Assert.Throws<ArgumentException>(() => converter.ToObject<object>(invalidJson));
             }
         }
-       
+
 
         [Test]
         public void AllConvertersAndDataTypes_ShouldSerializeAndDeserializeCorrectly()

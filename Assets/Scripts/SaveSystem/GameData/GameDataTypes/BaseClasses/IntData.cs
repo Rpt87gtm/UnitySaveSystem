@@ -9,6 +9,6 @@ namespace SaveSystem.GameData
             _data = data;
         }
         public IntData() : this(new Dictionary<string, int>()) { }
-        
+
     }
 }

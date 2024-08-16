@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using NUnit.Framework;
+using System.Collections.Generic;
 using Assert = ModestTree.Assert;
 
 namespace Zenject.Tests.BindFeatures

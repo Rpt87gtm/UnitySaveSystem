@@ -209,7 +209,7 @@ namespace SaveSystem.Tests.GameData.BaseClasses
 
 
             IJsonConverter jsonConverter = (new NewtonSoftJsonConverter());
-           
+
 
             IntData intDataAfterConvert = jsonConverter.ToObject<IntData>(jsonConverter.ToJson(intData));
 
@@ -222,7 +222,7 @@ namespace SaveSystem.Tests.GameData.BaseClasses
             gameDataContainer.AddGameData("gameData1", intData);
 
             Assert.AreEqual(intData, gameDataContainer.GameData<int>("gameData1"));
-            
+
 
             GameDataContainer gameDataContainerAfterConvert = jsonConverter.ToObject<GameDataContainer>(jsonConverter.ToJson(gameDataContainer));
 

@@ -1,5 +1,5 @@
-using System.Linq;
 using NUnit.Framework;
+using System.Linq;
 using Assert = ModestTree.Assert;
 
 namespace Zenject.Tests.Bindings
@@ -189,7 +189,7 @@ namespace Zenject.Tests.Bindings
             subContainer.Bind<IFoo>().To<Foo>().FromResolveAll(null, InjectSources.Local);
 
             Assert.Throws(() => subContainer.Resolve<IFoo>());
-            Assert.That(Enumerable.SequenceEqual(subContainer.ResolveAll<IFoo>(), new [] { foo2, foo3, }));
+            Assert.That(Enumerable.SequenceEqual(subContainer.ResolveAll<IFoo>(), new[] { foo2, foo3, }));
         }
 
         interface IBar

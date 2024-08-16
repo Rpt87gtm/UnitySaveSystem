@@ -1,13 +1,11 @@
 ﻿using NUnit.Framework;
-using System.ComponentModel;
-using System.Linq;
 
 namespace SaveSystem.Tests.JsonConverter
 {
     [TestFixture]
     public class PrivateFieldsJsonConverterTest : JsonConverterTests
     {
-       
+
         [OneTimeSetUp]
         public override void Init()
         {
@@ -16,6 +14,6 @@ namespace SaveSystem.Tests.JsonConverter
         }
 
 
-        
+
     }
 }

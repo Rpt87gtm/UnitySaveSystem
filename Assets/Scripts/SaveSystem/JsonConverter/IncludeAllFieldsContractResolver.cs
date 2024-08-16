@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 namespace SaveSystem
 {
     public class IncludeAllFieldsContractResolver : DefaultContractResolver

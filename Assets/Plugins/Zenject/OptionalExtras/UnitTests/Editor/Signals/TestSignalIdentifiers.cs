@@ -1,5 +1,5 @@
-using System;
 using NUnit.Framework;
+using System;
 using Assert = ModestTree.Assert;
 
 namespace Zenject.Tests.Signals
@@ -67,7 +67,7 @@ namespace Zenject.Tests.Signals
         [Test]
         public void TestBindWithoutDeclaration()
         {
-            Container.BindSignal<FooSignal>().WithId("asdf").ToMethod(() => {});
+            Container.BindSignal<FooSignal>().WithId("asdf").ToMethod(() => { });
 
             Assert.Throws(() => Container.ResolveRoots());
         }

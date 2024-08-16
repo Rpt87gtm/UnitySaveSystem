@@ -73,9 +73,9 @@ namespace Zenject.Tests.Other
 
             //for (int i = 0; i < 1000; i++)
             //{
-                //var test0 = container.Resolve<Test2>();
-                //var test1 = container.Resolve<Test2>();
-                //var test2 = container.Resolve<Test2>();
+            //var test0 = container.Resolve<Test2>();
+            //var test1 = container.Resolve<Test2>();
+            //var test2 = container.Resolve<Test2>();
             //}
 
             //stopwatch.Stop();

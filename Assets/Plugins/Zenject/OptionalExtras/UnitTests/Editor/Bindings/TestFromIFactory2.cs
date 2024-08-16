@@ -66,7 +66,7 @@ namespace Zenject.Tests.Bindings
 
             public Foo Create(int value)
             {
-                return _container.Instantiate<Foo>(new object [] { value, _value });
+                return _container.Instantiate<Foo>(new object[] { value, _value });
             }
         }
     }

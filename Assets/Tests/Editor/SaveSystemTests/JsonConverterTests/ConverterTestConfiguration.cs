@@ -23,7 +23,7 @@ namespace SaveSystem.Tests.JsonConverter
                 new Person { Name = "John", Age = 25 },
                 new Product { Id = 1, Price = 99.99 },
                 new Dictionary<int, string>{ { 3, "sfd" },{ 5, "sdf"}},
-                
+
 
             };
         }
@@ -33,7 +33,7 @@ namespace SaveSystem.Tests.JsonConverter
             return new List<object>
             {
                 new PrivateFieldsExample(3,"win"),
-         
+
 
                 new BoolData(new Dictionary<string,bool>{ { "test", true },{ "test3", false },{ "test2", false } }),
                 new ByteData(new Dictionary<string,byte>{ { "test", 0 },{ "test3", 5 },{ "test2", 255 } }),
@@ -45,7 +45,7 @@ namespace SaveSystem.Tests.JsonConverter
                 new ShortData(new Dictionary<string,short>{ { "test", 3 },{ "test3", 5 },{ "test2", -322 } }),
                 new StringData(new Dictionary<string,string>{ { "test", "3" },{ "test3", "5" },{ "test2", "-322" } }),
 
-                new GameDataContainer(new Dictionary<string, object> { 
+                new GameDataContainer(new Dictionary<string, object> {
                     { "key1", new BoolData(new Dictionary<string,bool>{ { "test", true },{ "test3", false },{ "test2", false } }) },
                     { "key2", new IntData(new Dictionary<string, int> { { "test", 3 }, { "test3", 5 }, { "test2", -322 } }) } })
             };
@@ -97,7 +97,7 @@ namespace SaveSystem.Tests.JsonConverter
         }
         public class PrivateFieldsExample
         {
-        
+
             private readonly int privateField1;
 
             private readonly string privateField2;
@@ -115,7 +115,7 @@ namespace SaveSystem.Tests.JsonConverter
             {
                 return $"privateField1: {privateField1}, privateField2: {privateField2}";
             }
-           
+
             public override bool Equals(object obj)
             {
                 if (obj == null || GetType() != obj.GetType())
@@ -127,10 +127,10 @@ namespace SaveSystem.Tests.JsonConverter
                 return other.privateField1 == privateField1 && other.privateField2 == privateField2;
             }
 
-           
+
             public override int GetHashCode()
             {
-                return HashCode.Combine(privateField1,privateField2);
+                return HashCode.Combine(privateField1, privateField2);
             }
         }
 

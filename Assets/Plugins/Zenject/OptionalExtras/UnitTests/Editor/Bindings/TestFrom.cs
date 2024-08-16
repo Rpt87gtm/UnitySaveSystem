@@ -1,6 +1,6 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using Assert = ModestTree.Assert;
 
 namespace Zenject.Tests.Bindings
@@ -181,7 +181,7 @@ namespace Zenject.Tests.Bindings
         public void TestMultipleBindingsConcreteMultipleSingle()
         {
             Container.Bind(typeof(IFoo), typeof(IBar))
-                .To(new List<Type> {typeof(Foo), typeof(Bar)}).AsSingle().NonLazy();
+                .To(new List<Type> { typeof(Foo), typeof(Bar) }).AsSingle().NonLazy();
 
             var foos = Container.ResolveAll<IFoo>();
             var bars = Container.ResolveAll<IBar>();
@@ -199,7 +199,7 @@ namespace Zenject.Tests.Bindings
         [Test]
         public void TestMultipleBindingsConcreteMultipleTransient()
         {
-            Container.Bind(typeof(IFoo), typeof(IBar)).To(new List<Type> {typeof(Foo), typeof(Bar)}).AsTransient().NonLazy();
+            Container.Bind(typeof(IFoo), typeof(IBar)).To(new List<Type> { typeof(Foo), typeof(Bar) }).AsTransient().NonLazy();
 
             var foos = Container.ResolveAll<IFoo>();
             var bars = Container.ResolveAll<IBar>();
@@ -217,7 +217,7 @@ namespace Zenject.Tests.Bindings
         [Test]
         public void TestMultipleBindingsConcreteMultipleCached()
         {
-            Container.Bind(typeof(IFoo), typeof(IBar)).To(new List<Type> {typeof(Foo), typeof(Bar)}).AsCached().NonLazy();
+            Container.Bind(typeof(IFoo), typeof(IBar)).To(new List<Type> { typeof(Foo), typeof(Bar) }).AsCached().NonLazy();
             Container.Bind<Foo>().AsCached().NonLazy();
             Container.Bind<Bar>().AsCached().NonLazy();
 

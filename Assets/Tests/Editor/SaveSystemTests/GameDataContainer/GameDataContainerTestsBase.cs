@@ -10,7 +10,7 @@ namespace SaveSystem.Tests.GameDataContainerTests
     public abstract class GameDataContainerTestsBase
     {
         protected abstract IGameDataContainer CreateContainer();
-       
+
 
         [Test]
         public void Test_AddGameData_AddsNewKey()
@@ -183,7 +183,7 @@ namespace SaveSystem.Tests.GameDataContainerTests
             // Act & Assert
             Assert.Throws<ArgumentException>(() => container.RemoveGameData<bool>(""));
         }
-       
+
         [Test]
         public void Test_Performance_AddAndRetrieveLargeNumberOfGameData()
         {

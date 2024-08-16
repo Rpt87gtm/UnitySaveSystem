@@ -25,7 +25,7 @@ namespace Zenject.Tests.Signals
         [Test]
         public void TestBindWithoutDeclaration()
         {
-            Container.BindSignal<FooSignal>().ToMethod(() => {});
+            Container.BindSignal<FooSignal>().ToMethod(() => { });
 
             Assert.Throws(() => Container.ResolveRoots());
         }
