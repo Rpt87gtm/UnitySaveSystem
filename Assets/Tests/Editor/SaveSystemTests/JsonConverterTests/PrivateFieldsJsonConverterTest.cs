@@ -1,17 +1,18 @@
 ﻿using NUnit.Framework;
+using System.ComponentModel;
 using System.Linq;
 
 namespace SaveSystem.Tests.JsonConverter
 {
     [TestFixture]
-    public class ReflectionJsonConverterTest : JsonConverterTests
+    public class PrivateFieldsJsonConverterTest : JsonConverterTests
     {
        
         [OneTimeSetUp]
         public override void Init()
         {
             _dataTypes = ConverterConfiguration.GetDataTypesWithPrivateFields();
-            _converters = ConverterConfiguration.GetConverters().Select(container => new ReflectionJsonConverter(container));
+            _converters = ConverterConfiguration.GetConverters();
         }
 
 

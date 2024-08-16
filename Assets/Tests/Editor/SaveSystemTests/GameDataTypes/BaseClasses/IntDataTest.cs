@@ -199,5 +199,39 @@ namespace SaveSystem.Tests.GameData.BaseClasses
             // Act & Assert
             Assert.Throws<ArgumentException>(() => intData.RemoveData(""));
         }
+        [Test]
+        public void SerializationTest()
+        {
+            IntData intData = new();
+            intData.SetData("key1", 3);
+            intData.SetData("key2", 23);
+
+
+
+            IJsonConverter jsonConverter = (new NewtonSoftJsonConverter());
+           
+
+            IntData intDataAfterConvert = jsonConverter.ToObject<IntData>(jsonConverter.ToJson(intData));
+
+            Assert.AreEqual(intData, intDataAfterConvert);
+            Assert.AreEqual(intData.Data("key1"), intDataAfterConvert.Data("key1"));
+
+
+            GameDataContainer gameDataContainer = new();
+
+            gameDataContainer.AddGameData("gameData1", intData);
+
+            Assert.AreEqual(intData, gameDataContainer.GameData<int>("gameData1"));
+            
+
+            GameDataContainer gameDataContainerAfterConvert = jsonConverter.ToObject<GameDataContainer>(jsonConverter.ToJson(gameDataContainer));
+
+
+            Assert.AreEqual(intData, gameDataContainerAfterConvert.GameData<int>("gameData1"));
+
+            Assert.AreEqual(gameDataContainer.GameData<int>("gameData1"), gameDataContainerAfterConvert.GameData<int>("gameData1"));
+            Assert.AreEqual(gameDataContainer, gameDataContainerAfterConvert);
+        }
+
     }
 }
